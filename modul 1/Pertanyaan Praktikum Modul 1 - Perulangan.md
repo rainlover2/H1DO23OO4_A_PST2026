@@ -7,11 +7,86 @@
 <img width="442" height="159" alt="image" src="https://github.com/user-attachments/assets/10d12436-f8f7-4761-abd9-559f920dcdb0" />
 
 Efek ini dihasilkan oleh Loop Induk: for (int ledPin = 2; ledPin < 7; ledPin++).
-
 Inisialisasi (ledPin = 2): Program mulai dari pin terkecil (Pin 2). Berdasarkan gambar, ini adalah LED pertama di sisi kiri.
-
 Kondisi (ledPin < 7): Program akan terus berjalan selama nomor pin di bawah 7 (yaitu pin 2, 3, 4, 5, dan 6).
-
 Urutan Eksekusi: Program menyalakan LED (HIGH), menunggu sejenak (delay), lalu mematikannya (LOW).
-
 Inkremen (ledPin++): Setelah satu LED selesai, nilai ledPin bertambah 1. Hal ini menyebabkan "nyala" lampu berpindah ke pin di sebelah kanannya secara berurutan.
+
+**3. Jelaskan bagaimana program membuat LED kembali dari kanan ke kiri!**
+
+<img width="508" height="180" alt="image" src="https://github.com/user-attachments/assets/ffa70c4b-f318-4a21-8006-2c2fdd94e1fd" />
+
+Efek ini dihasilkan oleh Loop Anak: for (int ledPin = 7; ledPin >= 2; ledPin--).
+Inisialisasi (ledPin = 7): Meskipun pin LED terakhir ada di angka 6, loop ini memulai perhitungan dari angka yang lebih besar.
+Kondisi (ledPin >= 2): Program akan terus berjalan mundur hingga mencapai pin 2.
+Dekremen (ledPin--): Berbeda dengan loop pertama, tanda -- berarti nilai pin dikurangi 1 di setiap putaran.
+Arah Gerak: Karena angka pin berkurang (misal dari 6 ke 5, lalu ke 4, dan seterusnya), maka urutan lampu yang menyala akan bergerak mundur dari posisi paling kanan kembali ke arah kiri.
+
+**4. Program agar LED menyala tiga LED kanan dan tiga LED kiri secara bergantian dengan perulangan**
+
+int timer = 1000; // Waktu delay (1 detik). Semakin tinggi angkanya, semakin lambat.
+
+void setup() { 
+  // Gunakan loop for untuk menginisialisasi setiap pin sebagai output
+  // Kita menggunakan pin 2 hingga 7 (total 6 LED)
+  for (int ledPin = 2; ledPin <= 7; ledPin++) { 
+    pinMode(ledPin, OUTPUT); 
+  } 
+} 
+
+void loop() { 
+  // --- FASE 1: 3 LED Kiri MENYALA, 3 LED Kanan MATI ---
+  
+  // Looping untuk menyalakan 3 LED kiri (pin 2, 3, dan 4)
+  for (int ledPin = 2; ledPin <= 4; ledPin++) { 
+    digitalWrite(ledPin, HIGH); 
+  }
+  
+  // Looping untuk mematikan 3 LED kanan (pin 5, 6, dan 7)
+  for (int ledPin = 5; ledPin <= 7; ledPin++) { 
+    digitalWrite(ledPin, LOW); 
+  }
+  
+  delay(timer); // Berikan jeda waktu
+  
+  // --- FASE 2: 3 LED Kiri MATI, 3 LED Kanan MENYALA ---
+  
+  // Looping untuk mematikan 3 LED kiri (pin 2, 3, dan 4)
+  for (int ledPin = 2; ledPin <= 4; ledPin++) { 
+    digitalWrite(ledPin, LOW); 
+  }
+  
+  // Looping untuk menyalakan 3 LED kanan (pin 5, 6, dan 7)
+  for (int ledPin = 5; ledPin <= 7; ledPin++) { 
+    digitalWrite(ledPin, HIGH); 
+  }
+  
+  delay(timer); // Berikan jeda waktu sebelum kembali mengulang
+}
+
+**Penjelasan Alur Progran**
+
+1. Inisialisasi (setup)
+
+Pada bagian ini, program menyiapkan "jalur" untuk arus listrik.
+Program menggunakan for loop untuk menyisir pin 2 sampai 7.
+Setiap pin tersebut diatur sebagai OUTPUT. Artinya, Arduino siap mengirimkan tegangan listrik ke LED yang terhubung pada pin-pin tersebut.
+
+2. Fase Pertama: Kiri Nyala, Kanan Mati
+   
+Ketika memasuki void loop(), program menjalankan instruksi berikut:
+Grup Kiri (Pin 2, 3, 4): Diberi instruksi HIGH. Ketiga LED ini akan menyala secara bersamaan (karena proses komputasi sangat cepat, mata kita melihatnya menyala serentak).
+Grup Kanan (Pin 5, 6, 7): Diberi instruksi LOW. Ketiga LED ini dipastikan dalam kondisi mati.
+delay(timer): Program berhenti sejenak selama 1 detik (1000ms). Pada saat ini, kamu akan melihat 3 lampu kiri menyala terang dan 3 lampu kanan gelap.
+
+3. Fase Kedua: Kiri Mati, Kanan Nyala
+   
+Setelah jeda 1 detik selesai, program berlanjut ke instruksi berikutnya yang merupakan kebalikan dari fase pertama:
+Grup Kiri (Pin 2, 3, 4): Sekarang diberi instruksi LOW. Ketiga LED yang tadinya nyala langsung padam.
+Grup Kanan (Pin 5, 6, 7): Sekarang diberi instruksi HIGH. Ketiga LED ini menyala serentak.
+delay(timer): Program kembali berhenti sejenak selama 1 detik. Kamu akan melihat kondisi sebaliknya: sisi kiri gelap, sisi kanan menyala.
+
+4. Pengulangan (Loop)
+   
+Karena kode ini berada di dalam fungsi loop(), setelah Fase Kedua selesai, program tidak berhenti. Ia akan meloncat kembali ke baris paling atas (Fase Pertama).
+

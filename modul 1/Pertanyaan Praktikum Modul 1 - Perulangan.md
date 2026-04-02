@@ -24,45 +24,53 @@ Arah Gerak: Karena angka pin berkurang (misal dari 6 ke 5, lalu ke 4, dan seteru
 
 **4. Program agar LED menyala tiga LED kanan dan tiga LED kiri secara bergantian dengan perulangan**
 
-int timer = 1000; // Waktu delay (1 detik). Semakin tinggi angkanya, semakin lambat.
+
+```cpp
+/*
+  Program Flip-Flop Kelompok LED
+  Membagi 6 LED menjadi 2 grup (Pin 2-4 dan Pin 5-7)
+  yang menyala bergantian secara berkelompok.
+*/
+
+int timer = 1000; // Durasi jeda dalam milidetik (1 detik)
 
 void setup() { 
-  // Gunakan loop for untuk menginisialisasi setiap pin sebagai output
-  // Kita menggunakan pin 2 hingga 7 (total 6 LED)
+  // Inisialisasi pin 2 sampai 7 sebagai OUTPUT menggunakan loop
   for (int ledPin = 2; ledPin <= 7; ledPin++) { 
     pinMode(ledPin, OUTPUT); 
   } 
 } 
 
 void loop() { 
-  // --- FASE 1: 3 LED Kiri MENYALA, 3 LED Kanan MATI ---
+  // --- FASE 1: GRUP KIRI NYALA, GRUP KANAN MATI ---
   
-  // Looping untuk menyalakan 3 LED kiri (pin 2, 3, dan 4)
+  // Menyalakan LED pada pin 2, 3, dan 4
   for (int ledPin = 2; ledPin <= 4; ledPin++) { 
     digitalWrite(ledPin, HIGH); 
   }
   
-  // Looping untuk mematikan 3 LED kanan (pin 5, 6, dan 7)
+  // Mematikan LED pada pin 5, 6, dan 7
   for (int ledPin = 5; ledPin <= 7; ledPin++) { 
     digitalWrite(ledPin, LOW); 
   }
   
-  delay(timer); // Berikan jeda waktu
+  delay(timer); // Menahan kondisi Fase 1 selama 1 detik
   
-  // --- FASE 2: 3 LED Kiri MATI, 3 LED Kanan MENYALA ---
+  // --- FASE 2: GRUP KIRI MATI, GRUP KANAN NYALA ---
   
-  // Looping untuk mematikan 3 LED kiri (pin 2, 3, dan 4)
+  // Mematikan LED pada pin 2, 3, dan 4
   for (int ledPin = 2; ledPin <= 4; ledPin++) { 
     digitalWrite(ledPin, LOW); 
   }
   
-  // Looping untuk menyalakan 3 LED kanan (pin 5, 6, dan 7)
+  // Menyalakan LED pada pin 5, 6, dan 7
   for (int ledPin = 5; ledPin <= 7; ledPin++) { 
     digitalWrite(ledPin, HIGH); 
   }
   
-  delay(timer); // Berikan jeda waktu sebelum kembali mengulang
+  delay(timer); // Menahan kondisi Fase 2 selama 1 detik sebelum mengulang ke awal
 }
+```
 
 **Penjelasan Alur Progran**
 

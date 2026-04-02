@@ -20,40 +20,40 @@ Nilainya bersifat dinamis karena mengikuti variabel timeDelay.
 
 Untuk mengubah alurnya menjadi Lambat → Cepat → Sedang → Mati, kita tidak bisa hanya menggunakan satu variabel yang terus berkurang. Kita perlu menentukan urutan durasi secara spesifik.
 
-*Berikut adalah kode yang telah dimodifikasi beserta penjelasannya:*
+```cpp
+const int ledPin = 11; // Menentukan pin 11 sebagai jalur data untuk LED 
 
-C++
-const int ledPin = 11; // Menentukan pin 11 sebagai jalur data untuk LED
 void setup() { 
-  pinMode(ledPin, OUTPUT); // Mengatur pin 11 sebagai output listrik
-} 
+  pinMode(ledPin, OUTPUT); // Mengatur pin 11 sebagai output listrik 
+}
 
 void loop() { 
-  // --- TAHAP 1: LAMBAT (1000ms) ---
-  digitalWrite(ledPin, HIGH); // Nyalakan LED
-  delay(1000);                // Tahan selama 1 detik
-  digitalWrite(ledPin, LOW);  // Matikan LED
+  // --- TAHAP 1: LAMBAT (1000ms) --- 
+  digitalWrite(ledPin, HIGH); // Nyalakan LED 
+  delay(1000);                // Tahan selama 1 detik 
+  digitalWrite(ledPin, LOW);  // Matikan LED 
   delay(1000);                // Tahan selama 1 detik
 
-  // --- TAHAP 2: CEPAT (200ms) ---
-  digitalWrite(ledPin, HIGH); // Nyalakan LED
-  delay(200);                 // Tahan sebentar saja (cepat)
-  digitalWrite(ledPin, LOW);  // Matikan LED
+  // --- TAHAP 2: CEPAT (200ms) --- 
+  digitalWrite(ledPin, HIGH); // Nyalakan LED 
+  delay(200);                 // Tahan sebentar saja (cepat) 
+  digitalWrite(ledPin, LOW);  // Matikan LED 
   delay(200);                 // Tahan sebentar saja
 
-  // --- TAHAP 3: SEDANG (500ms) ---
-  digitalWrite(ledPin, HIGH); // Nyalakan LED
-  delay(500);                 // Tahan dengan kecepatan menengah
-  digitalWrite(ledPin, LOW);  // Matikan LED
+  // --- TAHAP 3: SEDANG (500ms) --- 
+  digitalWrite(ledPin, HIGH); // Nyalakan LED 
+  delay(500);                 // Tahan dengan kecepatan menengah 
+  digitalWrite(ledPin, LOW);  // Matikan LED 
   delay(500);                 // Tahan dengan kecepatan menengah
 
-  // --- TAHAP 4: MATI (Berhenti) ---
-  digitalWrite(ledPin, LOW);  // Pastikan LED mati
-  while(true) {
-    // Loop kosong yang mengunci program di sini selamanya
-    // sehingga LED tetap mati dan tidak mengulang ke atas (reset).
-  }
+  // --- TAHAP 4: MATI (Berhenti) --- 
+  digitalWrite(ledPin, LOW);  // Pastikan LED mati 
+  while(true) { 
+    // Loop kosong yang mengunci program di sini selamanya 
+    // sehingga LED tetap mati dan tidak mengulang ke atas (reset). 
+  } 
 }
+```
 
 *Penjelasan Baris Kode Modifikasi:*
 

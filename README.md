@@ -1,1 +1,7 @@
-# H1DO23OO4_A_PST2026
+***Praktikum Pemrograman Sistem Tertanam (PST)***
+
+Praktikum Pemrograman Sistem Tertanam
+Nama: Ratu Naurah Calista
+NIM: H1D023004
+Shift Awal Praktikum: A
+Shift Akhir Praktikum: Senin

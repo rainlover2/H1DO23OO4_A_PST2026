@@ -16,7 +16,7 @@ Mode `INPUT_PULLUP` mengaktifkan resistor internal di dalam mikrokontroler Ardui
 **3. Jika salah satu LED segmen tidak menyala, apa kemungkinan penyebabnya?**
 
 * **Sisi Hardware:** Kabel *jumper* putus atau kendor, resistor terbakar/rusak, pin *Seven Segment* bengkok tidak masuk ke *breadboard*, atau salah satu LED pada unit display memang sudah mati.
-* **Sisi Software:** Kesalahan penulisan nomor pin pada array `segmentPins` [cite: 138, 226] [cite_start]atau kesalahan logika biner (angka 0/1) pada baris karakter tertentu di matriks `digitPattern]`.
+* **Sisi Software:** Kesalahan penulisan nomor pin pada array `segmentPins` atau kesalahan logika biner (angka 0/1) pada baris karakter tertentu di matriks `digitPattern]`.
 
 **4. Modifikasi rangkaian dan program dengan dua push button (Increment & Decrement).**
 
